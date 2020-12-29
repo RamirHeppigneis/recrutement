@@ -33,11 +33,6 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="smallint")
-     */
-    private $enabled;
-
-    /**
      * @ORM\Column(type="string", length=70)
      */
     private $slug;
@@ -57,6 +52,11 @@ class Product
      * @ORM\JoinColumn(nullable=false)
      */
     private $brand;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
 
     public function getId(): ?int
     {
@@ -95,18 +95,6 @@ class Product
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getEnabled(): ?int
-    {
-        return $this->enabled;
-    }
-
-    public function setEnabled(int $enabled): self
-    {
-        $this->enabled = $enabled;
 
         return $this;
     }
@@ -155,6 +143,18 @@ class Product
     public function setBrand(?Brand $brand): self
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }
