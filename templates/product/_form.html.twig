@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn" onclick="return confirm('Etes vous sur de vouloir modifier ce produit ?');">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-primary active" onclick="return confirm('Etes vous sur de vouloir modifier ce produit ?');">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

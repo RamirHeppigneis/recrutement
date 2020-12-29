@@ -24,10 +24,10 @@ class AppFixtures extends Fixture
                 $product->setName($faker->name);
                 $product->setDescription($faker->name);
                 $product->setPrice($i + $j);
-                $product->setSlug($faker->name);
+                // $product->setSlug($faker->name);
                 $product->setBrand($brand);
                 $product->setCreatedAt(new \DateTime());
-                $product->setEnabled(true);
+                // $product->setEnabled(true);
 
                 $manager->persist($product);
             }

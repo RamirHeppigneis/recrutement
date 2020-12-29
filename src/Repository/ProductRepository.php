@@ -27,7 +27,7 @@ class ProductRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.enabled = :val')
             ->setParameter('val', true)
-            ->orderBy('p.id', 'ASC')
+            ->orderBy('RAND()')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

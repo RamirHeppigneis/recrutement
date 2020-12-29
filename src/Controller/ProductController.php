@@ -31,6 +31,8 @@ class ProductController extends AbstractController
     public function new(Request $request): Response
     {
         $product = new Product();
+        $product->setCreatedAt(new \DateTime());
+        $product->setUpdatedAt(new \DateTime());
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
@@ -49,10 +51,14 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
+     * @Route("/{slug}", name="product_show", methods={"GET"})
      */
-    public function show(Product $product): Response
+    public function show(Product $product, $slug): Response
     {
+        $url = $this->generateUrl(
+            'product_show',
+            ['slug' => $product->getSlug()]
+        );
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
@@ -91,4 +97,23 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('product_index');
     }
+
+    /**
+     * @Route("/add/{id}", name="product_add", methods={"GET", "POST"})
+     */
+    public function add(Product $product, $id): Response
+    {
+        if ($product->getEnabled()) {
+            $product->setEnabled(false);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('home_page');
+        } else {
+            $product->setEnabled(true);
+        }
+        
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('product_index');
+    }
+
 }

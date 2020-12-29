@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('brand_index') }}">back to list</a>
+    <a href="{{ path('brand_index') }}" class="btn btn-primary active" role="button>Back to list</a>
 
-    <a href="{{ path('brand_edit', {'id': brand.id}) }}">edit</a>
+    <a href="{{ path('brand_edit', {'id': brand.id}) }}" class="btn btn-primary active" role="button">Edit</a>
 
     {{ include('brand/_delete_form.html.twig') }}
 {% endblock %}

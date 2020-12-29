@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -33,6 +34,7 @@ class Product
     private $price;
 
     /**
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=70)
      */
     private $slug;
@@ -56,7 +58,7 @@ class Product
     /**
      * @ORM\Column(type="boolean")
      */
-    private $enabled;
+    private $enabled = false;
 
     public function getId(): ?int
     {

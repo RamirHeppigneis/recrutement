@@ -31,8 +31,9 @@
                 <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary active" role="button">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-primary active" role="button">edit</a>
+                    <a href="{{ path('product_add', {'id': product.id}) }}" class="btn btn-primary active" role="button">Add</a>
+                    <a href="{{ path('product_show', {'id': product.id, 'slug': product.slug}) }}" class="btn btn-primary active" role="button">Show</a>
+                    <a href="{{ path('product_edit', {'id': product.id, 'slug': product.slug}) }}" class="btn btn-primary active" role="button">Edit</a>
                 </td>
             </tr>
         {% else %}
